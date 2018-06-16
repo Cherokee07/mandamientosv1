@@ -1,0 +1,301 @@
+<?php View::content(); ?>
+<link href="<?php echo PUBLIC_PATH ?>css/plugins/dataTables.bootstrap.css"  rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="<?php echo PUBLIC_PATH ?> css/normalize.css">
+<link rel="stylesheet" type="text/css" href="<?php echo PUBLIC_PATH ?>css/tabs.css">
+<link rel="stylesheet" type="text/css" href="<?php echo PUBLIC_PATH ?>css/tabstyles.css">
+<?php echo Tag::js('modernizr.custom'); ?>
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-body">
+            <div class="container"><h3>MEDIA AFILIACION</h3>
+            </div> 
+        </div>  
+    </div>
+</div>
+<section>
+<?php echo Form::open("indiciados/crearAfiliacion",'post','class="form-group"'); ?>
+  <div class="box-body">
+    <div class="row">
+        <?php if(isset($mafiliacion->id)): ?>
+            <input type="hidden" name="idafiliacion" value="<?php echo $mafiliacion->id ?>">
+        <?php endif?>
+        <input type="hidden" name="mafiliacion[indiciado_id]" value="<?php echo $indiciado->id ?>">   
+    </div>
+    <div class="row">
+      <div class="tabs tabs-style-tzoid">
+          <nav>
+              <ul>
+                  <li><a href="#section-tzoid-1"><span>General</span></a></li>
+                  <li><a href="#section-tzoid-2"><span>Cabello</span></a></li>
+                  <li><a href="#section-tzoid-3"><span>Cejas</span></a></li>
+                  <li><a href="#section-tzoid-4"><span>Frente</span></a></li>
+                  <li><a href="#section-tzoid-5"><span>Labios</span></a></li>
+                  <li><a href="#section-tzoid-6"><span>Menton</span></a></li>
+                  <li><a href="#section-tzoid-7"><span>Nariz</span></a></li>
+                  <li><a href="#section-tzoid-8"><span>Ojos</span></a></li>
+                  <li><a href="#section-tzoid-9"><span>Orejas</span></a></li>
+              </ul>
+          </nav>
+          <div class="content-wrap">
+              <section id="section-tzoid-1">
+                <div class="box-body">
+                  <div class="row">
+                    <h3>Características Generales</h3> 
+                    <br>
+                    <div class="col-md-4 form-group">
+                      <label class="control-label">Cara</label>
+                      <?php echo Form::dbSelect('mafiliacion.cara','descripcion',array('cara','listar'),'Seleccione',' class="form-control" data-live-search="true"',isset($mafiliacion)?$mafiliacion->cara_id:''); ?>
+                    </div>
+                    <div class="col-md-4 form-group">
+                      <label>Complexion</label>
+                      <?php echo Form::dbSelect('mafiliacion.complexion','descripcion',array('complexion','listar'),'Seleccione',' class="form-control" data-live-search="true"',isset($mafiliacion)?$mafiliacion->complexion_id:'') ?>
+                    </div>
+                    <div class="col-md-4 form-group">
+                      <label>Color piel</label>
+                      <?php echo Form::dbSelect('mafiliacion.colorpiel','descripcion',array('colorpiel','listar'),'Seleccione',' class="form-control" data-live-search="true"', isset($mafiliacion)?$mafiliacion->colorpiel_id:'') ?>
+                    </div>
+                    <div class="col-md-4 form-group">
+                      <label>Boca misuras</label>
+                      <?php echo Form::dbSelect('mafiliacion.bocacomisuras','descripcion',array('bocacomisuras','listar'),'Seleccione',' class="form-control" data-live-search="true"', isset($mafiliacion)?$mafiliacion->bocamisuras_id:'') ?>
+                    </div>
+                    <div class="col-md-4 form-group">
+                      <label>Boca tamaño</label>
+                      <?php echo Form::dbSelect('mafiliacion.bocatamano','descripcion',array('bocatamano','listar'),'Seleccione',' class="form-control"', isset($mafiliacion)?$mafiliacion->bocatamano_id:'') ?>
+                    </div> 
+                    <div class="col-md-4 form-group">
+                      <label>Tipo de Sangre</label>
+                      <?php echo Form::dbSelect('mafiliacion.sangrefactorrh','descripcion',array('sangrefactorrh','listar'),'Seleccione','class="form-control"',isset($mafiliacion)?$mafiliacion->sangrefactorrh_id:'') ?>
+                    </div>
+                    <div class="col-md-4 form-group">
+                      <label>Grupo de Sangre</label>
+                      <?php echo Form::dbSelect('mafiliacion.sangretipo','descripcion',array('sangretipo','listar'),'Seleccione','class="form-control"',isset($mafiliacion)?$mafiliacion->sangretipo_id:'') ?>
+                    </div>
+                  </div>
+                </div>
+              </section>
+              <section id="section-tzoid-2">
+                <div class="box-body">
+                  <div class="row">
+                    <h3>Características Cabello</h3> 
+                    <br>                    
+                    <div class="col-md-4 form-group">
+                        <label>Calvicie</label>
+                        <?php echo Form::dbSelect('mafiliacion.cabellocalvicie','descripcion',array('cabellocalvicie','listar'),'Seleccione',' class="form-control" data-live-search="true"',isset($mafiliacion)?$mafiliacion->cabellocalvicie_id:'') ?>
+                    </div>
+                    <div class="col-md-4 form-group">
+                        <label>Cantidad</label>
+                        <?php echo Form::dbSelect('mafiliacion.cabellocantidad','descripcion',array('cabellocantidad','listar'),'Seleccione',' class="form-control" data-live-search="true"',isset($mafiliacion)?$mafiliacion->cabellocantidad_id:'') ?>
+                    </div>
+                    <div class="col-md-4 form-group">
+                        <label>Color</label>
+                        <?php echo Form::dbSelect('mafiliacion.cabellocolor','descripcion',array('cabellocolor','listar'),'Seleccione',' class="form-control" data-live-search="true"',isset($mafiliacion)?$mafiliacion->cabellocolor_id:'') ?>
+                    </div>
+                    <div class="col-md-4 form-group">
+                        <label>Forma</label>
+                        <?php echo Form::dbSelect('mafiliacion.cabelloforma','descripcion',array('cabelloforma','listar'),'Seleccione',' class="form-control" data-live-search="true"',isset($mafiliacion)?$mafiliacion->cabelloforma_id:'') ?>
+                    </div>
+                    <div class="col-md-4 form-group">
+                        <label>Implantacion</label>
+                        <?php echo Form::dbSelect('mafiliacion.cabelloimplantacion','descripcion',array('cabelloimplantacion','listar'),'Seleccione',' class="form-control" data-live-search="true"',isset($mafiliacion)?$mafiliacion->cabelloimplantacion_id:'') ?>
+                    </div>                  
+                  </div>
+                </div>
+              </section>
+              <section id="section-tzoid-3">
+                <div class="box-body">
+                  <div class="row">
+                    <h3>Características Cejas</h3>
+                    <br>
+                     <div class="col-md-4 form-group">
+                      <label>Direccion</label>
+                      <?php echo Form::dbSelect('mafiliacion.cejasdireccion','descripcion',array('cejasdireccion','listar'),'Seleccione',' class="form-control" data-live-search="true"',isset($mafiliacion)?$mafiliacion->cejasdireccion_id:'') ?>
+                    </div>
+                    <div class="col-md-4 form-group">
+                      <label>Forma</label>
+                      <?php echo Form::dbSelect('mafiliacion.cejasforma','descripcion',array('cejasforma','listar'),'Seleccione',' class="form-control" data-live-search="true"',isset($mafiliacion)?$mafiliacion->cejasforma_id:'') ?>
+                    </div>
+                    <div class="col-md-4 form-group">
+                      <label>Implantacion</label>
+                      <?php echo Form::dbSelect('mafiliacion.cejasimplantacion','descripcion',array('cejasimplantacion','listar'),'Seleccione',' class="form-control" data-live-search="true"',isset($mafiliacion)?$mafiliacion->cejasimplantacion_id:'') ?>
+                    </div>
+                    <div class="col-md-4 form-group">
+                      <label>Tamaño</label>
+                      <?php echo Form::dbSelect('mafiliacion.cejastamano','descripcion',array('cejastamano','listar'),'Seleccione',' class="form-control" data-live-search="true"',isset($mafiliacion)?$mafiliacion->cejastamano_id:'') ?>
+                    </div>
+                  </div>
+                </div>
+              </section>
+              <section id="section-tzoid-4">
+                <div class="box-body">
+                  <div class="row">
+                    <h3>Características Frente</h3>
+                    <br>
+                      <div class="col-md-4 form-group">
+                        <label>Altura</label>
+                        <?php echo Form::dbSelect('mafiliacion.frentealtura','descripcion',array('frentealtura','listar'),'Seleccione',' class="form-control" data-live-search="true"',isset($mafiliacion)?$mafiliacion->frentealtura_id:'') ?>
+                      </div>
+                      <div class="col-md-4 form-group">
+                        <label>Ancho</label>
+                        <?php echo Form::dbSelect('mafiliacion.frenteancho','descripcion',array('frenteancho','listar'),'Seleccione',' class="form-control" data-live-search="true"',isset($mafiliacion)?$mafiliacion->frenteancho_id:'') ?>
+                      </div>
+                      <div class="col-md-4 form-group">
+                        <label>Inclinacion</label>
+                        <?php echo Form::dbSelect('mafiliacion.frenteinclinacion','descripcion',array('frenteinclinacion','listar'),'Seleccione',' class="form-control" data-live-search="true"',isset($mafiliacion)?$mafiliacion->frenteinclinacion_id:'') ?>
+                      </div>
+                  </div>                            
+                </div>
+              </section>
+              <section id="section-tzoid-5">
+                <div class="box-body">
+                  <div class="row">
+                    <h3>Características Labios</h3> 
+                    <br>   
+                    <div class="col-md-4 form-group">
+                      <label>Altura nasal labial</label>
+                      <?php echo Form::dbSelect('mafiliacion.labiosalturanasolabial','descripcion',array('labiosalturanasolabial','listar'),'Seleccione',' class="form-control" data-live-search="true"',isset($mafiliacion)?$mafiliacion->labiosalturanasolabial_id:'') ?>
+                    </div>
+                    <div class="col-md-4 form-group">
+                      <label>Espesor</label>
+                      <?php echo Form::dbSelect('mafiliacion.labiosespesor','descripcion',array('labiosespesor','listar'),'Seleccione',' class="form-control" data-live-search="true"',isset($mafiliacion)?$mafiliacion->labiosespesor_id:'') ?>
+                    </div>
+                    <div class="col-md-4 form-group">
+                      <label>Prominencia</label>
+                      <?php echo Form::dbSelect('mafiliacion.labiosprominencia','descripcion',array('labiosprominencia','listar'),'Seleccione',' class="form-control" data-live-search="true"',isset($mafiliacion)?$mafiliacion->labiosprominencia_id:'') ?>
+                    </div>
+                  </div>                       
+                </div>
+              </section>
+              <section id="section-tzoid-6">
+                <div class="box-body">
+                  <div class="row">
+                    <h3>Características Menton</h3>
+                    <br> 
+                    <div class="col-md-4 form-group">
+                      <label>Forma</label>
+                      <?php echo Form::dbSelect('mafiliacion.mentonforma','descripcion',array('mentonforma','listar'),'Seleccione',' class="form-control" data-live-search="true"',isset($mafiliacion)?$mafiliacion->mentonforma_id:'') ?>
+                    </div>
+                    <div class="col-md-4 form-group">
+                      <label>Inclinacion</label>
+                      <?php echo Form::dbSelect('mafiliacion.mentoninclinacion','descripcion',array('mentoninclinacion','listar'),'Seleccione',' class="form-control" data-live-search="true"',isset($mafiliacion)?$mafiliacion->mentoninclinacion_id:'') ?>
+                    </div>
+                    <div class="col-md-4 form-group">
+                      <label>Tipo</label>
+                      <?php echo Form::dbSelect('mafiliacion.mentontipo','descripcion',array('mentontipo','listar'),'Seleccione',' class="form-control" data-live-search="true"',isset($mafiliacion)?$mafiliacion->mentontipo_id:'') ?>
+                    </div>    
+                  </div>                            
+                </div>
+              </section>
+              <section id="section-tzoid-7">
+                <div class="box-body">
+                  <div class="row">
+                    <h3>Características Nariz</h3> 
+                    <br>
+                    <div class="col-md-4 form-group">
+                      <label>Altura</label>
+                      <?php echo Form::dbSelect('mafiliacion.narizaltura','descripcion',array('narizaltura','listar'),'Seleccione',' class="form-control" data-live-search="true"',isset($mafiliacion)?$mafiliacion->narizaltura_id:'') ?>
+                    </div>
+                    <div class="col-md-4 form-group">
+                      <label>Ancho</label>
+                      <?php echo Form::dbSelect('mafiliacion.narizancho','descripcion',array('narizancho','listar'),'Seleccione',' class="form-control" data-live-search="true"',isset($mafiliacion)?$mafiliacion->narizaltura_id:'') ?>
+                    </div>
+                    <div class="col-md-4 form-group">
+                      <label>Base</label>
+                      <?php echo Form::dbSelect('mafiliacion.narizbase','descripcion',array('narizbase','listar'),'Seleccione',' class="form-control" data-live-search="true"',isset($mafiliacion)?$mafiliacion->narizbase_id:'') ?>
+                    </div>
+                    <div class="col-md-4 form-group">
+                      <label>Dorso</label>
+                      <?php echo Form::dbSelect('mafiliacion.narizdorso','descripcion',array('narizdorso','listar'),'Seleccione',' class="form-control" data-live-search="true"',isset($mafiliacion)?$mafiliacion->narizdorso_id:'') ?>
+                    </div>
+                    <div class="col-md-4 form-group">
+                      <label>Raiz</label>
+                      <?php echo Form::dbSelect('mafiliacion.narizraiz','descripcion',array('narizraiz','listar'),'Seleccione',' class="form-control" data-live-search="true"',isset($mafiliacion)?$mafiliacion->narizraiz_id:'') ?>
+                    </div>  
+                  </div>                            
+                </div>
+              </section>
+              <section id="section-tzoid-8">
+                <div class="box-body">
+                  <div class="row">
+                    <h3>Características Ojos</h3> 
+                    <br>
+                    <div class="col-md-4 form-group">
+                      <label>Color</label>
+                      <?php echo Form::dbSelect('mafiliacion.ojoscolor','descripcion',array('ojoscolor','listar'),'Seleccione',' class="form-control" data-live-search="true"',isset($mafiliacion)?$mafiliacion->ojoscolor_id:'') ?>
+                    </div>
+                    <div class="col-md-4 form-group">
+                      <label>Forma</label>
+                      <?php echo Form::dbSelect('mafiliacion.ojosforma','descripcion',array('ojosforma','listar'),'Seleccione',' class="form-control" data-live-search="true"',isset($mafiliacion)?$mafiliacion->ojosforma_id:'') ?>
+                    </div>
+                    <div class="col-md-4 form-group">
+                      <label>Tamaño</label>
+                      <?php echo Form::dbSelect('mafiliacion.ojostamano','descripcion',array('ojostamano','listar'),'Seleccione',' class="form-control" data-live-search="true"',isset($mafiliacion)?$mafiliacion->ojostamano_id:'') ?>
+                    </div>      
+                  </div>
+                </div>
+              </section>
+              <section id="section-tzoid-9">
+                <div class="box-body">
+                  <div class="row">
+                    <h3>Características Oreja</h3>
+                      <br>                         
+                      <div class="col-md-3 form-group">
+                        <label>Borde forma</label>
+                        <?php echo Form::dbSelect('mafiliacion.orejabordeforma','descripcion',array('orejabordeforma','listar'),'Seleccione',' class="form-control" data-live-search="true"',isset($mafiliacion)?$mafiliacion->orejabordeforma_id:'') ?>
+                      </div>
+                      <div class="col-md-3 form-group">
+                        <label>Helix adherencia</label>
+                        <?php echo Form::dbSelect('mafiliacion.orejahelixadherencia','descripcion',array('orejahelixadherencia','listar'),'Seleccione',' class="form-control" data-live-search="true"',isset($mafiliacion)?$mafiliacion->orejahelixadherencia_id:'') ?>
+                      </div>
+                      <div class="col-md-3 form-group">
+                        <label>Helix original</label>
+                        <?php echo Form::dbSelect('mafiliacion.orejahelixoriginal','descripcion',array('orejahelixoriginal','listar'),'Seleccione',' class="form-control" data-live-search="true"',isset($mafiliacion)?$mafiliacion->orejahelixoriginal_id:'') ?>
+                      </div>
+                      <div class="col-md-3 form-group">
+                        <label>Helix  posterior</label>
+                        <?php echo Form::dbSelect('mafiliacion.orejahelixposterior','descripcion',array('orejahelixposterior','listar'),'Seleccione',' class="form-control" data-live-search="true"',isset($mafiliacion)?$mafiliacion->orejahelixposterior_id:'') ?>
+                      </div>
+                      <div class="col-md-3 form-group">
+                        <label>Helix superior</label>
+                        <?php echo Form::dbSelect('mafiliacion.orejahelixsuperior','descripcion',array('orejahelixsuperior','listar'),'Seleccione',' class="form-control" data-live-search="true"',isset($mafiliacion)?$mafiliacion->orejahelixsuperior_id:'') ?>
+                      </div>
+                      <div class="col-md-3 form-group">
+                        <label>Lobulo adherencia </label>
+                        <?php echo Form::dbSelect('mafiliacion.orejalobuloadherencia','descripcion',array('orejalobuloadherencia','listar'),'Seleccione',' class="form-control" data-live-search="true"',isset($mafiliacion)?$mafiliacion->orejalobuloadherencia_id:'') ?>
+                      </div>
+                      <div class="col-md-3 form-group">
+                        <label>Lobulo contorno</label>
+                        <?php echo Form::dbSelect('mafiliacion.orejalobulocontorno','descripcion',array('orejalobulocontorno','listar'),'Seleccione',' class="form-control" data-live-search="true"',isset($mafiliacion)?$mafiliacion->orejalobulocontorno_id:'') ?>
+                      </div>
+                      <div class="col-md-3 form-group">
+                        <label>Lobulo dimension</label>
+                        <?php echo Form::dbSelect('mafiliacion.orejalobulodimension','descripcion',array('orejalobulodimension','listar'),'Seleccione',' class="form-control" data-live-search="true"',isset($mafiliacion)?$mafiliacion->orejalobulodimension_id:'') ?>
+                      </div>
+                      <div class="col-md-3 form-group">
+                        <label>Lobulo particularidad</label>
+                        <?php echo Form::dbSelect('mafiliacion.orejalobuloparticularidad','descripcion',array('orejalobuloparticularidad','listar'),'Seleccione',' class="form-control" data-live-search="true"',isset($mafiliacion)?$mafiliacion->orejalobuloparticularidad_id:'') ?>
+                      </div>
+                  </div>
+                </div>
+              </section>                        
+          </div><!-- /content -->
+      </div>
+      <div class="box-footer">
+          <div class="col-lg-12 col-md-12 pull-right">
+              <button type="reset" class="btn btn-warning btn-flat" style="margin-right:10px;">Limpiar</button>
+              <button type="submit" value="formulario" name="formulario" class="btn btn-success btn-flat">Guardar</button>
+          </div> 
+      </div>
+    </div>
+  </div>
+</section>
+<?php echo Form::close(); ?>
+    <?php echo Tag::js('cbpFWTabs') ?>
+    <script>
+      (function() {
+
+        [].slice.call( document.querySelectorAll( '.tabs' ) ).forEach( function( el ) {
+          new CBPFWTabs( el );
+        });
+
+      })();
+    </script>

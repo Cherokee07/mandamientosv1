@@ -1,0 +1,64 @@
+<?php View::content(); ?>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="box box-primary">
+      <div class="box-header with-border" style="text-align:center" >
+        <h1 >SISTEMA DE CAPTURA</h1>
+        <h2 >***BIENVENIDO***</h2>
+        <h4 ><?php echo Session::get('titulo').' '.Session::get('nombre').' '.Session::get('paterno').' '.Session::get('materno'); ?></h4>
+      </div>
+    
+      <div class="box-body" style="text-align:center">
+        <?php if(isset($ordenes)): ?>
+          <h2 ><em>ORDENES PENDIENTES POR CAPTURAR</em></h2>
+          <div class="col-md-9 col-md-offset-1  text-align:center">
+            <table class="table table-condensed table-hover table-striped table-responsive">
+              <thead text-align:center>
+                <th style="text-align: center" class="col-md-2" cl>Expediente penal</th>
+                <th style="text-align: center">Juzgado</th>
+                <th style="text-align: center">Año Penal</th>
+                <th style="text-align: center">Tipo</th>
+                <th>Editar</th>
+                <th>Eliminar</th>
+              </thead>
+              <tbody>
+                <?php foreach ($ordenes as $key ): ?>
+                  <tr id="row-<?php echo $key->id ?>">
+                    <td><?php echo ($key->exppenal!=null)?$key->exppenal:'Sin registrar' ?></td>
+                    <td><?php echo ($key->juzgados!=null)?$key->getJuzgados()->juzgado:'Sin registrar'?></td>
+                    <td><?php echo ($key->anipenal!=null)?$key->anipenal:'Sin registrar' ?></td>
+                    <td><?php echo ($key->tiposoa_id!=null)?$key->getTiposoa()->descripcion:'Sin registrar'?></td>
+                  
+                    <td><span class="badge complemento1"><a href="<?php echo PUBLIC_PATH ?>ordenes/formCreacion/<?php echo Cifrar::todo($key->id)?>"><i class="fa fa-pencil"></i></a></span></td>
+                    <td><span class="badge complemento"><i class="fa fa-close quitar-<?php echo $key->id ?>" data-placement="right"  data-html="true" data-toggle="popover" title="¿Esta seguro de esta operación?"  data-content="<button class='btn btn-success btn-sm btn-flat boton' id='<?php echo $key->id ?>' type='button' onclick='eliminarDen(event)'>Aceptar</button><button type='button' class='btn btn-danger btn-sm btn-flat boton cancelar' data-id='<?php echo $key->id ?>' onclick='cerrarPop(event)'>Cancelar</button>">
+                    </i></span></td>
+                  </tr>
+                <?php endforeach ?>
+              </tbody>
+            </table>
+          </div>
+        <?php else: ?>
+         <h4>Usted no tiene expedientes pendientes</h4>
+        <?php endif ?>
+      </div>
+    </div>
+  </div>
+  
+</div>
+
+
+<?php echo Tag::js('inicio'); ?>
+
+ <style>
+      .complemento{
+        background: #ED3103;
+    }   
+    .complemento1{
+        background: #8ECEF1;
+    }   
+</style>
+
+
+
+

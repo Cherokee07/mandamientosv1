@@ -1,0 +1,266 @@
+<?php View::content(); ?>
+<link href="<?php echo PUBLIC_PATH ?>css/plugins/dataTables.bootstrap.css"  rel="stylesheet" type="text/css">
+    <div class="box box-primary">
+        <?php if(isset($ofendido)){ ?>
+                    <h4 class="text-red">Edición</h4>
+                <?php } ?>
+        <h3 class="box-title">DATOS DE LA VICTIMA</h3> 
+        <?php echo Form::open("ofendidos/crearOfendidoTemp",'post','class="form-group"'); ?>      
+            <div class="box-body">
+                <div class="row">
+                    <?php if(isset($ofendido)): ?>
+                        <input type="hidden" name="ofendido" value="<?php echo $ofendido->id ?>">
+                    <?php endif ?>
+                    <input type="hidden" name="ofendidos[ordenes]" value="<?php echo $orden->id ?>">
+                    <div class="col-md-4">
+                        <label class="control-label">Nombre</label>
+                        <input type="text" name="ofendidos[nombre]" class="mayuscula form-control" value="<?php echo isset($ofendido)?$ofendido->nombre:''?>">
+                    </div>
+                    <div class="col-md-3 form-group">
+                        <label class="control-label">Apellido Paterno</label>
+                        <input class="form-control mayuscula" name="ofendidos[paterno]" type="text" value="<?php echo isset($ofendido)?$ofendido->paterno:''?>">
+                    </div>
+                    <div class="col-md-3 form-group">
+                        <label class="control-label">Apellido Materno</label>
+                        <input class="form-control mayuscula" name="ofendidos[materno]" type="text" value="<?php echo isset($ofendido)?$ofendido->materno:'' ?>">
+                    </div>
+                    <div class="col-md-2 form-group">
+                        <label class="control-label">Edad</label>
+                        <input class="form-control" name="ofendidos[edad]" type="number" value="<?php echo isset($ofendido)?$ofendido->edad:'' ?>">
+                    </div>
+                    <div class="col-md-2 form-group">
+                        <label class="control-label">Fecha de nacimiento</label>
+                        <input type="date" name="ofendidos[fechanacimiento]" class="form-control" value="<?php echo isset($ofendido)?$ofendido->fechanacimiento:'' ?>">
+                    </div>
+                    <div class="col-md-2 form-group">
+                        <label class="control-label">Sexo</label>
+                        <select class="form-control" name="ofendidos[sexo]">
+                            <option value="D" <?php echo isset($ofendido) ? ($ofendido->sexo == 'D' ? 'selected' : '') : '' ?>>DESCONOCIDO</option>
+                            <option value="F" <?php echo isset($ofendido) ? ($ofendido->sexo == 'F' ? 'selected' : '') : '' ?>>FEMENINO</option>
+                            <option value="M" <?php echo isset($ofendido) ? ($ofendido->sexo == 'M' ? 'selected' : '') : '' ?>>MASCULINO</option>
+                        </select>
+                    </div>               
+                    <div class="col-md-3 form-group">
+                        <label class="control-label">Alias </label>
+                        <input class="form-control mayuscula" type="text" name="ofendidos[sobren]" value="<?php echo isset($ofendido)?$ofendido->sobren:'' ?>">
+                    </div>
+                    <div class="col-md-5 form-group">
+                        <label class="control-label">Nacionalidad </label>
+                        <?php echo Form::dbSelect('ofendidos.nacionalidad','nacionalidad',array('nacionalidades','listar'),'Seleccione',' class="form-control age selectpicker" data-live-search="true"', isset($ofendido)?$ofendido->nacionalidades_id:110); ?>
+                    </div>                   
+                    <div class="col-md-6 form-group">
+                        <label class="control-label">Lugar de nacimiento</label>
+                        <?php echo Form::dbSelect('ofendidos.lugarnac','entidad',array('entidades','listar'),'SELECCIONE','class="form-control selectentidad"',isset($ofendido)?$ofendido->entidades_id:'') ?> 
+                    </div>
+                    <div class="col-md-3 pais" hidden>
+                        <label class="control-label">País</label>
+                        <input type="text" name="ofendidos[pais]" class="form-control mayuscula" value="<?php echo isset($ofendido)?$ofendido->lnacimiento:'' ?>">
+                    </div> 
+                    <div class="col-md-6 form-group">
+                        <label class="control-label">Lugar de residencia</label>
+                        <input type="text" name="ofendidos[lugarres]" class="form-control mayuscula" value="<?php echo isset($ofendido)?$ofendido->lugarres:'' ?>">
+                    </div>
+                    <div class="col-md-5 form-group">
+                        <label class="control-label">Domicilio</label>
+                        <input type="text" name="ofendidos[domicilio]" class="form-control mayuscula" value="<?php echo isset($ofendido)?$ofendido->domicilio:'' ?>">
+                    </div>
+                    <div class="col-md-4 form-group">
+                        <label class="control-label">Ocupación</label>
+                        <input type="text" name="ofendidos[ocupacion]" class="form-control mayuscula" value="<?php echo isset($ofendido)?$ofendido->ocupacion:'' ?>">
+                    </div>
+                    <div class="col-md-3 form-group">
+                        <label class="control-label">Grado de estudios</label>
+                        <?php echo Form::dbSelect('ofendidos.escolaridad','escolaridad',array('escolaridades','listar'),'SELECCIONE',' class="form-control age selectpicker" data-live-search="true"', isset($ofendido)?$ofendido->escolaridades_id:'') ?>
+                    </div>
+                    <div class="col-md-3 form-group">
+                        <label class="control-label">Grupo Etnico</label>
+                        <?php echo Form::dbSelect('ofendidos.grupoet','grupo',array('getnicos' , 'listar' ), 'SELECCIONE', 'class="form-control age selectpicker" data-live-search="true"', isset($ofendido)?$ofendido->getnicos_id:'')?>                 
+                    </div>
+                    <div class="col-md-3 form-group">
+                        <label class="control-label">Dialecto/Sistema Lingüístico</label>
+                        <?php echo Form::dbSelect('ofendidos.dialecto','dialecto', array('dialectos','listar'), 'SELECCIONE', ' class="form-control age selectpicker" data-live-search="true"', isset($ofendido)?$ofendido->dialectos_id:'') ?>
+                    </div>
+                    <div class="col-md-3 form-group">
+                        <label class="control-label">Numero de cartilla de SMN</label>
+                        <input type="text" name="ofendidos[serviciomilitar]" class="form-control mayuscula" value="<?php echo isset($ofendido)?$ofendido->serviciomilitar:'' ?>">
+                    </div>
+                    <div class="col-md-3 form-group">
+                        <label class="control-label">RFC</label>
+                        <input type="text" name="ofendidos[rfc]" class="form-control mayuscula" value="<?php echo isset($ofendido)?$ofendido->rfc:'' ?>">
+                    </div>
+                </div>
+                <!--formulario para ser el caso de menores de edad -->
+                <div class="complemento">
+                    <div class="row">
+                         <div class="col-md-12">
+                            <div class="col-md-6 form-group">
+                                <label class="control-label">Menor de edad</label>
+                                <select class="form-control" name="ofendidos[menor]" id="selectmenor">
+                                    <option value="0" <?php echo isset($ofendido)?($ofendido->menor=='N'?'selected':''):''?>>NO</option>
+                                    <option value="1" <?php echo isset($ofendido)?($ofendido->menor=='S'?'selected':''):''?>>SI</option>
+                                </select>
+                            </div>
+                        <!--inicio:form complementario por si es menor-->
+                            <div class="form-menor" hidden>
+                            <div class="col-md-6 form-group">
+                                <label class="control-label">Rango de edad</label>
+                                <?php echo Form::dbSelect('ofendidos.rangoedad','clasificacion',array('clasedades','listar'),'SELECCIONE','class="form-control"', isset($ofendido)?$ofendido->clasedades_id:'') ?>
+                            </div>                  
+                            <div class="col-md-4 form-group">
+                                <label class="control-label">Nombre del responsable</label>
+                                <input type="text" name="ofendidos[nomres]" class="form-control mayuscula" value="<?php echo isset($ofendido)?$ofendido->nomres:'' ?>" >
+                            </div>
+                            <div class="col-md-3 form-group">
+                                <label class="control-label">Ap.Paterno del responsable</label>
+                                <input type="text" name="ofendidos[apatres]" class="form-control mayuscula" value="<?php echo isset($ofendido)?$ofendido->apatres:'' ?>">
+                            </div>
+                            <div class="col-md-3 form-group">
+                                <label class="control-label">Ap.Materno del responsable</label>
+                                <input type="text" name="ofendidos[amatres]" class="form-control mayuscula" value="<?php echo isset($ofendido)?$ofendido->amatres:'' ?>">
+                            </div>
+                            <div class="col-md-2 form-group">
+                                <label class="control-label">Persona moral</label>
+                                <select name="ofendidos[moral]" class="form-control">
+                                    <option value="N" <?php echo isset($ofendido)?($ofendido->menor=='N'?'selected':''):''?>>NO</option>
+                                    <option value="S" <?php echo isset($ofendido)?($ofendido->menor=='S'?'selected':''):''?>>SI</option>
+                                
+                                </select>
+                            </div>
+                        </div>
+                        <!--fin:form complementario por si es menor-->
+                    </div>
+                </div>
+            </div>
+            <div class="complemento2">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="col-md-6 form-group">
+                            <label class="control-label">Occiso</label>
+                            <select class="form-control" name="ofendidos[occiso]" id="selectocciso">
+                                <option value="0" <?php echo isset($ofendido)?($ofendido->occiso=='N'?'selected':''):''?>>NO</option>
+                                <option value="1" <?php echo isset($ofendido)?($ofendido->occiso=='S'?'selected':''):''?>>SI</option>
+                            </select>
+                        </div>
+                    <!--inicio:form complementario por si es occiso-->
+                        <div class="form-occiso" hidden >
+                            <div class="col-md-6 form-group">
+                                <label class="control-label">Certificado de defunción</label>
+                                <input type="text" name="ofendidos[certificadodef]" class="form-control mayuscula <?php echo isset($atributo)?$atributo:'' ?>" value="<?php echo isset($ofendido)?$ofendido->certificadodef:'' ?>">
+                            </div>
+                        <div class="col-md-4 form-group">
+                            <label class="control-label">Causa de muerte</label>
+                            <input type="text" name="ofendidos[causamuerte]" class="form-control mayuscula <?php echo isset($atributo)?$atributo:'' ?>" value="<?php echo isset($ofendido)?$ofendido->causamuerte:'' ?>">
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label class="control-label">Forma de Homicidio</label>
+                            <?php echo Form::dbSelect('ofendidos.fhomicidios','forma',array('fhomicidios','listar'),'SELECCIONE',isset($atributo)?"class='form-control $atributo'":'class=form-control',isset($ofendido)?$ofendido->fhomicidios_id:'') ?>
+                            </div>
+                        <div class="col-md-4 form-group">
+                            <label class="control-label">Objeto que produjo la lesion o muerte</label>
+                            <?php echo Form::dbSelect('ofendidos.objusado','objusado',array('objusados','listar'),'SELECCIONE','class="form-control"',isset($ofendido)?$ofendido->objusados_id:'') ?>
+                        </div>
+                    </div>
+                    <!--fin:form complementario por si es menor-->
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2 form-group">
+            <label class="control-label">Tipo ofendido</label>
+            <?php echo Form::dbSelect('ofendidos.tipofen','tipo',array('tofendidos','listar'),'SELECCIONE','class="form-control"', isset($ofendido)?$ofendido->tofendidos_id:'') ?>                
+            </div>            
+            <div class="col-md-5 form-group">
+                <label class="control-label">Giro comercial</label>
+                <?php echo Form::dbSelect('ofendidos.giro','giro', array('giros','listar'),'SELECCIONE','class="form-control age selectpicker" data-live-search="true"',isset($ofendido)?$ofendido->giros_id:'') ?>  
+            </div>
+            <div class="col-md-2 form-group" >
+                <label ">Funcionario publico </label>
+                <select name="ofendidos[autoridad]" class="form-control">
+                    <option value="NO"<?php echo isset($ofendido)?($ofendido->autoridad=='N'?'selected':''):''?>>NO</option>
+                    <option value="SI"<?php echo isset($ofendido)?($ofendido->autoridad=='S'?'selected':''):''?>>SI</option>
+                </select>
+            </div>
+            <div class="col-md-3 form-group">
+                <label class="control-label">Discapacidad</label>
+                <?php echo Form::dbSelect('ofendidos.discapacidad','discapacidad', array('discapacidades','listar'),'SELECCIONE','class="form-control"', isset($ofendido)?$ofendido->discapacidades_id:'') ?>
+            </div>
+            <div class="col-md-12 form-group">
+                <label>Observaciones</label>
+                <textarea name="ofendidos[observaciones]" id="ofendidos_observaciones" class="form-control mayuscula" required=""><?php echo isset($ofendido)?$ofendido->observaciones:''?>
+                </textarea>                  
+            </div>
+            <div class="box-footer">
+                <div class="col-lg-3 col-md-3 pull-right">
+                    <button type="reset" class="btn btn-warning btn-flat" style="margin-right:10px;">Limpiar</button>
+                    <button type="submit" value="formulario" name="formulario" class="btn btn-success btn-flat">Registrar</button>
+                </div> 
+            </div>
+        </div>
+        <?php echo Form::close(); ?>
+    </div>   
+
+
+
+<?php if(count($orden->getOfendidos())>0): ?>
+    <div class="col-md-12">
+        <div class="box box-danger boxlista" >
+            <div class="box-header text-center"><h3>LISTA DE VICTIMAS</h3>
+                <div class="box-body">
+                    <div class="col-md-12">
+                        <table class="table table-condensed table-hover">
+                            <thead>
+                                <th>Nombre del ofendido</th>
+                                <th>Nombres Fictisios</th>
+                                <th class="text-center">Agregar nombre fictisio</th>
+                                <th>Editar</th>
+                                <th>Eliminar</th>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($orden->getOfendidos() as $key ): ?>
+                                    <tr id="row-<?php echo $key->id ?>">
+                                        <td class="nombre-<?php echo $key->id; ?>">
+                                            <?php echo $key->getNombre()?>
+                                        </td>
+                                        <td>
+                                            <ul class="nav nav-pills nav-stacked">
+                                                <?php foreach ($key->getNomofens() as $nombre): ?>
+                                                    <li class="item" id="lis-<?php echo $nombre->id ?>"><?php echo $nombre->getNombre() ?>
+                                                        <div class="pull-right">
+                                                            <i class="fa fa-pencil text-orange editname" data-name="<?php echo $nombre->id ?>" data-id="<?php echo $nombre->id ?>"></i>
+                                                        </div>
+                                                    </li>
+                                                <?php endforeach ?>
+                                            </ul>
+                                        </td>
+                                        <td>    
+                                        </td>
+                                        <td>
+                                            <span class="badge bg-yellow"><a href="<?php echo PUBLIC_PATH.'ofendidos/formcreate/'.Cifrar::todo($orden->id).'/'.Cifrar::todo($key->id)?>"><i class="fa fa-pencil"></i></a>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                <?php endforeach ?>
+                            </tbody>                            
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php endif ?>
+
+
+
+<?php echo Tag::js('formularios/formularios'); ?>
+<?php echo Tag::js('formularios/formulariovic'); ?>
+
+
+<style>
+.complemento{
+    background: #E6ECDD;
+}
+
+.complemento2{
+    background: #D9EFF4;
+ }     
+</style>
+

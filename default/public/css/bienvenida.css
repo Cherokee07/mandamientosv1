@@ -1,0 +1,98 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+body{
+    background-color: #fdfdfd;	
+    font-family: Arial, Helvetica;
+	width : 900px;
+	margin:0 auto;
+}
+#head {
+    height: 72px;
+    background: url(../img/formato/arriba.png) repeat-x top fixed;
+}
+#head h1 {
+    font-size: 30px;
+    padding: 10px 8px 15px;
+    margin: 0;
+    float: left;
+    color: #fff;
+}
+.app {
+    font-size: 30px;
+    margin: 0;
+    color: #8A6F5C;
+}
+.title {
+    font-size: 30px;
+    margin: 0;
+   color: #333333;
+}
+#head #info-app {
+    font-size: 20px;
+    padding: 20px 0px 15px;
+    margin: 0;
+    float: left;
+    color: #fff;
+}
+
+#footer {
+    //background-color: #8A6F5C;
+    border-top: 4px solid #088A85;
+    color: white;
+    padding: 1em;
+    height: 60px;
+    background: /*#D1C2A3*/ url(../img/formato/abajo.png) repeat-x;	
+}
+#footer a {
+    font-size: 14px;
+    text-decoration: none;
+    color: #fff;
+}
+#footer a:hover {
+    color: #000;
+}
+#footer p{
+    font-size: 14px;
+    color: #d1a88b;
+}
+#footer ul.links {
+    text-align: center;
+    list-style: none inside;
+    padding: 0;
+}
+#footer ul.links li {
+    display: inline;
+    color: #D1A88B;
+}
+
+#content {
+	background-color: #EFFBFB;
+}
+
+#cuerpo {
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+
+#logo-app {
+    margin-right: auto;
+    margin-top: 40px;
+    display: block;
+    margin-left: 100px;
+    width: 160px;
+}
+
+.clear {
+    clear: both;
+}
+h4 {
+font-size: small;
+margin-top: 1em;
+}
+h4 span {
+
+color: #8A6F5C;
+}

@@ -1,0 +1,310 @@
+fieldset{
+	width: 96%;
+	margin-left: 1.2%;
+	text-align: left;
+-moz-border-radius: 10px;
+ -webkit-border-radius: 10px; /* Safari and Chrome */
+ border-radius: 10px; /* Opera 10.5+, future browsers, and now also Internet Explorer 6+ using IE-CSS3 */	
+}
+
+
+fieldset.ingreso{
+	width: 25%;
+	margin-left: 1.2%;
+-moz-border-radius: 10px;
+ -webkit-border-radius: 10px; /* Safari and Chrome */
+ border-radius: 10px; /* Opera 10.5+, future browsers, and now also Internet Explorer 6+ using IE-CSS3 */	
+}
+
+fieldset.entrar{
+	width: 25%;
+	margin-left: 1.2%;
+-moz-border-radius: 10px;
+ -webkit-border-radius: 10px; /* Safari and Chrome */
+ border-radius: 10px; /* Opera 10.5+, future browsers, and now also Internet Explorer 6+ using IE-CSS3 */	
+}
+
+
+legend{
+color: #FFFFFF;
+background: #B9A880;
+border: 1px solid #887447;
+padding: 2px 6px;
+font-size: 14px;
+font-weight: bold;
+  padding-left: 12px;  
+  padding-right: 12px;  
+}
+
+#izquierda {
+	margin-left: 1.2%;
+}
+
+label{
+	vertical-align: middle;
+}
+
+td{
+	vertical-align: middle;
+	text-align: rigth;
+	font-size: 12px;
+	font-weight: bold;
+}
+
+
+label.ingreso {
+	width : 12%;
+	text-align: right;
+	font-size: 12px;
+	font-weight: bold;
+	float: left;
+	padding-top: 6px;
+	padding-right: 4px;
+}
+
+label.especial {
+	width : 25%;
+	text-align: right;
+	font-size: 12px;
+	font-weight: bold;
+	float: left;
+	padding-top: 6px;
+	padding-right: 4px;
+}
+
+label.erroneo {
+	font-size: 10px;
+	font-weight: normal;
+	color: red;
+	vertical-align: top;
+}
+
+.col1{
+	width:12%;
+	float:left;
+	text-align: right;	
+	font-size: 12px;
+	font-weight: bold;	
+	padding-right: .4%;
+	clear:left;
+	border: 1px solid #FFF;
+	vertical-align: middle;
+}
+.col2{
+	width:35%;
+	float:left;
+	border: 1px solid #FFF;
+}
+.col3{
+	width:10%;
+	float:left;
+	text-align: right;	
+	font-size: 12px;
+	font-weight: bold;	
+	padding-right: .4%;
+	border: 1px solid #FFF;
+	vertical-align: middle;
+}
+.col4{
+	width:14.6%;
+	float:left;
+	border: 1px solid #FFF;
+}
+
+.col5{
+	width:4%;
+	float:left;
+	text-align: right;	
+	font-size: 12px;
+	font-weight: bold;	
+	padding-right: .4%;
+	border: 1px solid #FFF;
+}
+.col6{
+	width:9.6%;
+	float:left;
+}
+
+.col8{
+	width:12%;
+	float:left;
+}
+
+.col10{
+	width:18%;
+	float:left;
+}
+
+.col12{
+	width:16%;
+	float:left;
+}
+
+.col14{
+	width:6%;
+	float:left;
+}
+
+.col16{
+	width:82%;
+	float:left;
+}
+
+.col18{
+	width:40.5%;
+	float:left;
+	border: 1px solid #FFF;
+}
+.separa{
+	font-size:0;
+	height:1px;
+	clear:both;
+}
+
+label.campos {
+	text-align: right;
+	width: 100%;
+	font-size: 12px;
+	font-weight: bold;
+	padding-top: 6px;
+	padding-right: 4px;
+}
+
+input.text,select,textarea {
+	width: 14.2%;
+}
+
+#centrado {
+	width: 8.8%;
+	font-weight: bold;
+	height: 30px;
+	text-align: center;
+}
+
+table{
+	align: center;
+	border: 0;
+	cellpadding: 0;
+	cellspacing: 0;
+}
+
+table.catalogo{
+	align: center;
+	border: 1;
+	width: 100%;
+}
+
+th{
+	text-align: center;
+	font-weight: bold;
+	font-size: 12px;
+}
+
+th.encabeza{
+	text-align: center;
+	font-weight: bold;
+	font-size: 16px;	
+}
+
+td{
+	text-align: left;
+}
+
+td.reporte{
+	font-weight: normal;
+}
+
+td.menu{
+	text-align: center;
+	font-weight: bold;
+}
+
+td.centrado{
+	text-align: center;
+}
+
+td.derecha{
+	text-align: right;
+	font-weight: bold;
+}
+
+td.derpeq{
+	text-align: center;
+	font-weight: bold;
+	font-size: 11px;
+}
+
+td.varios{
+	text-align: left;
+	font-weight: normal;
+	font-size: 10px;
+}
+
+
+
+tr.lista{
+	vertical-align: middle;
+	height: 16px;
+}
+
+img.menu{
+	width: 114px;
+	height: 115px;
+	border: 0;	
+}
+
+.btnAccion{
+font:bold 14px Tahoma, Geneva, sans-serif;
+font-style:normal;
+color:#ffffff;
+background:#BCB29A;
+border:3px outset #ffffff;
+text-shadow:4px 0px 3px #000000;
+box-shadow:5px 5px 5px #D2C9B3;
+-moz-box-shadow:5px 5px 5px #D2C9B3;
+-webkit-box-shadow:5px 5px 5px #D2C9B3;
+border-radius:26px 26px 25px 25px;
+-moz-border-radius:26px 26px 25px 25px;
+-webkit-border-radius:26px 26px 25px 25px;
+width:120px;
+padding:6px 25px;
+cursor:pointer;
+margin:0 auto;
+}
+
+.btnAccion:active{
+cursor:pointer;
+position:relative;
+top:2px;
+}
+
+label.error{
+	color: #FF0000;
+	font-size: 12px;
+}
+
+.liga {
+	width:100%;
+	border: 1px solid #000;
+	background: #B9A880;
+}
+
+.liga a {
+		font-family: Tahoma, Geneva, sans-serif;
+		font-size: 12px;
+		font-weight: 900;
+		width:100%;
+		text-decoration: none;
+		color: #FFFFFF;		
+	}
+.liga a:hover {
+		font-family: Tahoma, Geneva, sans-serif;
+		font-size: 14px;
+		font-weight: 900;		
+		width:100%;		
+		text-decoration: none;
+		color: silver;		
+	}
+.estatus{
+	
+}

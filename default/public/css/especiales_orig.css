@@ -1,0 +1,239 @@
+fieldset{
+	width: 820px;
+	margin-left: 10px;
+	text-align: left;
+-moz-border-radius: 10px;
+ -webkit-border-radius: 10px; /* Safari and Chrome */
+ border-radius: 10px; /* Opera 10.5+, future browsers, and now also Internet Explorer 6+ using IE-CSS3 */	
+}
+
+
+fieldset.ingreso{
+	width: 736px;
+	margin-left: 6px;
+-moz-border-radius: 10px;
+ -webkit-border-radius: 10px; /* Safari and Chrome */
+ border-radius: 10px; /* Opera 10.5+, future browsers, and now also Internet Explorer 6+ using IE-CSS3 */	
+}
+
+fieldset.entrar{
+	width: 420px;
+	margin-left: 6px;
+-moz-border-radius: 10px;
+ -webkit-border-radius: 10px; /* Safari and Chrome */
+ border-radius: 10px; /* Opera 10.5+, future browsers, and now also Internet Explorer 6+ using IE-CSS3 */	
+}
+
+
+legend{
+color: #FFFFFF;
+background: #B9A880;
+border: 1px solid #887447;
+padding: 2px 6px;
+font-size: 14px;
+font-weight: bold;
+  padding-left: 12px;  
+  padding-right: 12px;  
+}
+
+#izquierda {
+	margin-left: 10px;
+}
+
+label{
+	vertical-align: middle;
+}
+
+td{
+	vertical-align: middle;
+	text-align: rigth;
+	font-size: 12px;
+	font-weight: bold;
+}
+
+
+label.ingreso {
+	width : 120px;
+	text-align: right;
+	font-size: 12px;
+	font-weight: bold;
+	float: left;
+	padding-top: 6px;
+	padding-right: 4px;
+}
+
+label.erroneo {
+	font-size: 10px;
+	font-weight: normal;
+	color: red;
+	vertical-align: top;
+}
+
+
+label.campos {
+	text-align: rigth;
+	font-size: 12px;
+	font-weight: bold;
+	float: left;
+	text-align: right;
+	padding-top: 6px;
+	padding-right: 4px;
+}
+
+input.text,select,textarea {
+	width: 160px;
+}
+
+#centrado {
+	width: 80px;
+	font-weight: bold;
+	height: 30px;
+	text-align: center;
+}
+
+table{
+	align: center;
+	border: 0;
+	cellpadding: 0;
+	cellspacing: 0;
+}
+
+table.catalogo{
+	align: center;
+	border: 1;
+	width: 100%;
+}
+
+th{
+	text-align: center;
+	font-weight: bold;
+	font-size: 12px;
+}
+
+th.encabeza{
+	text-align: center;
+	font-weight: bold;
+	font-size: 16px;	
+}
+
+td{
+	text-align: left;
+}
+
+td.reporte{
+	font-weight: normal;
+}
+
+td.menu{
+	text-align: center;
+	font-weight: bold;
+}
+
+td.centrado{
+	text-align: center;
+}
+
+td.derecha{
+	text-align: right;
+	font-weight: bold;
+}
+
+td.derpeq{
+	text-align: center;
+	font-weight: bold;
+	font-size: 11px;
+}
+
+td.varios{
+	text-align: left;
+	font-weight: normal;
+	font-size: 10px;
+}
+
+
+
+tr.lista{
+	vertical-align: middle;
+	height: 16px;
+}
+
+img.menu{
+	width: 114px;
+	height: 115px;
+	border: 0;	
+}
+
+#btnBuscar{
+  font-weight: bold;  
+font:bold 14px Tahoma, Geneva, sans-serif;
+font-style:normal;
+color:#ffffff;
+background:#87bde6;
+border:3px outset #ffffff;
+text-shadow:4px 0px 3px #000000;
+box-shadow:5px 5px 5px #4b89b3;
+-moz-box-shadow:5px 5px 5px #4b89b3;
+-webkit-box-shadow:5px 5px 5px #4b89b3;
+border-radius:26px 26px 25px 25px;
+-moz-border-radius:26px 26px 25px 25px;
+-webkit-border-radius:26px 26px 25px 25px;
+width:80px;
+height:24px;
+padding:-2px 12px;
+cursor:pointer;
+margin:0 auto;  
+}
+
+#btnAccion{
+font:bold 14px Tahoma, Geneva, sans-serif;
+font-style:normal;
+color:#ffffff;
+background:#BCB29A;
+border:3px outset #ffffff;
+text-shadow:4px 0px 3px #000000;
+box-shadow:5px 5px 5px #D2C9B3;
+-moz-box-shadow:5px 5px 5px #D2C9B3;
+-webkit-box-shadow:5px 5px 5px #D2C9B3;
+border-radius:26px 26px 25px 25px;
+-moz-border-radius:26px 26px 25px 25px;
+-webkit-border-radius:26px 26px 25px 25px;
+width:120px;
+padding:6px 25px;
+cursor:pointer;
+margin:0 auto;
+}
+
+#btnAccion:active{
+cursor:pointer;
+position:relative;
+top:2px;
+}
+
+.ligas{
+font:bold 14px Verdana, Geneva, sans-serif;
+font-style:normal;
+color:#ffffff;
+background:#a0b7fb;
+border:1px solid #008fba;
+text-shadow:3px 3px 1px #484d9c;
+box-shadow:0px -7px 4px #111b5c;
+-moz-box-shadow:0px -7px 4px #111b5c;
+-webkit-box-shadow:0px -7px 4px #111b5c;
+border-radius:29px 0px 30px 15px;
+-moz-border-radius:29px 0px 30px 15px;
+-webkit-border-radius:29px 0px 30px 15px;
+width:33px;
+padding:4px 32px;
+cursor:pointer;
+margin:0 auto;
+}
+.ligas:active{
+cursor:pointer;
+position:relative;
+top:2px;
+}
+
+label.error{
+	color: #FF0000;
+	font-size: 12px;
+}

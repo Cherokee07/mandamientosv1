@@ -1,0 +1,82 @@
+<?php View::content(); ?>
+<link href="<?php echo PUBLIC_PATH ?>css/plugins/dataTables.bootstrap.css"  rel="stylesheet" type="text/css">
+<div class="box box-primary">
+    <h3 class="box-title">STATUS DE LA VICTIMA</h3>
+    <?php echo Form::open("indiciados/crearStatus",'post','class="form-group"'); ?>
+    <div class="box-body">
+        <div class="box-body">
+            <div class="row">
+                <?php if(isset($indiciado->id)): ?>
+                    <input type="hidden" name="idindiciado" value="<?php echo $indiciado->id ?>">
+                <?php endif?>
+                <input type="hidden" name="indiciados[ordenes]" value="<?php echo $orden->id ?>">
+                <div class="col-md-4 form-group">
+                    <label class="control-label">Fecha de Libramiento</label>
+                    <input class="form-control" type="date" name="indiciados[fecedo]" value="<?php echo isset($indiciado)?$indiciado->fecedo:'' ?>">
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="col-md-4 form-group">
+                            <label class="control-label">Estado de Orden</label>
+                            <?php echo Form::dbSelect('indiciados.estadosoa_id', 'descripcion', array('estadosoa', 'listar'), 'Seleccione', 'class="form-control" style="width: 100%"', isset($indiciado)?$indiciado->estadosoa_id:'') ?>                
+                        </div>
+                        <div class="col-md-4 form-group" >
+                            <label class="control-label">Motivo</label>
+                            <?php echo Form::dbSelect('indiciados.motivosoa_id', 'descripcion', array('motivosoa', 'listar2'), 'Seleccione', 'class="form-control" style="width: 100%"', isset($indiciado)?$indiciado->motivosoa_id:'') ?>    
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label class="control-label">Fecha de ultimo cambio de estado</label>
+                            <input class="form-control" type="date"  name="indiciados[fechacambio]" value="<?php echo isset($indiciado)?$indiciado->fecha_cambio:'' ?>">
+                        </div>   
+                        <div class="col-md-12 form-group">
+                            <label>Observaciones :</label>
+                            <textarea name="indiciados[observaciones]" class="mayuscula form-control"><?php echo isset($indiciado)?$indiciado->observaciones:'' ?></textarea>              
+                        </div>
+                        <div class="box-footer">
+                            <div class="col-lg-12 col-md-12 pull-right">
+                                <button type="reset" class="btn btn-warning btn-flat" style="margin-right:10px;">Limpiar</button>
+                                <button type="submit" value="formulario" name="formulario" class="btn btn-success btn-flat">Guardar</button>
+                            </div> 
+                        </div>                                            
+                    </div>   
+                </div>        
+            </div>                   
+        </div>
+    <?php echo Form::close(); ?>        
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-warning">
+            <div class="box-header with-border">
+                <h3 class="text-center">HISTORIAL DE ESTADOS</h3>
+            </div>
+            <div class="box-body">
+                <div class="col-md-12">
+                    <table class="table table-condensed table-hover">
+                        <thead>
+                            <th>ESTADO</th>
+                            <th>MOTIVO</th>
+                            <th>FECHA ESTADO</th>
+                            <th>OBSERVACIONES</th>
+                        </thead>
+                        <?php foreach (array_reverse($indiciado->getEstatusindiciado()) as $key ): ?>
+                                <tr>
+                                    <td><?php echo $key->estadosoa_id?($key->getEstadosoa()->descripcion):''?>
+                                    </td>
+                                    <td><?php echo $key->motivosoa_id?($key->getMotivosoa()->descripcion):'' ?>
+                                    </td>
+                                    <td><?php echo $key->fechacambio ?>
+                                    </td>
+                                    <td><?php echo $key->observaciones ?>
+                                    </td>
+                                </tr>
+                        <?php endforeach ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

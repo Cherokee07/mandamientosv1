@@ -1,0 +1,218 @@
+<?php header('Content-Type: text/html; charset=utf-8'); ?> 
+<!DOCTYPE html>
+<!--
+This is a starter template page. Use this page to start your new project from
+scratch. This page gets rid of all links and provides the needed markup only.
+-->
+<html>
+<head>
+ 
+ <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge">-->
+
+  <title>ORDENES DE APREHENSION</title>
+<!-- Tell the browser to be responsive to screen width -->
+<!-- <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">-->
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- Tell the browser to be responsive to screen width -->
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="Content-Type" content="text/javascript; charset=utf-8" />
+<meta name="base_url" content="<?php echo PUBLIC_PATH ?>">
+
+<!--Archivos css-->
+<link href="<?php echo PUBLIC_PATH ?>css/bootstrap.min.css" rel="stylesheet" type="text/css" media="screen">
+<link href="<?php echo PUBLIC_PATH ?>css/_all-skins.min.css" rel="stylesheet" type="text/css" media="screen">
+<link href="<?php echo PUBLIC_PATH ?>css/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css" media="screen">
+<link href="<?php echo PUBLIC_PATH ?>css/AdminLTE.min.css" rel="stylesheet" type="text/css" media="screen">
+<link href="<?php echo PUBLIC_PATH ?>css/ionicons.min.css" rel="stylesheet" type="text/css" media="screen">
+<link href="<?php echo PUBLIC_PATH ?>css/font-awesome.min.css" rel="stylesheet" type="text/css" media="screen">
+<link href="<?php echo PUBLIC_PATH ?>css  /custom.css" rel="stylesheet" type="text/css" media="screen">
+<link href="<?php echo PUBLIC_PATH ?>css/plugins/jquery.datetimepicker.css" rel="stylesheet" type="text/css" media="screen">
+<link href="<?php echo PUBLIC_PATH ?>css/plugins/easy-autocomplete.css" rel="stylesheet" type="text/css" media="screen">
+<link href="<?php echo PUBLIC_PATH ?>css/plugins/bootstrap-select.min.css" rel="stylesheet" type="text/css" media="screen">
+<link href="<?php echo PUBLIC_PATH ?>css/plugins/bootstrap-tagsinput.css" rel="stylesheet" type="text/css" media="screen">
+
+<?php echo Tag::js('plugins/jquery-2.2.3.min'); ?>
+
+<body class="hold-transition skin-blue sidebar-mini <?php echo ($minimizarmenu == 'S') ? 'sidebar-collapse':'' ?>" >
+<div class="wrapper" >
+
+  <!-- Main Header -->
+  <header class="main-header" >
+
+    <!-- Logo -->
+    <a href="<?php echo PUBLIC_PATH ?>" class="logo">
+      <!-- mini logo for sidebar mini 50x50 pixels -->
+      <span class="logo-mini"><i class="fa fa-home"></i></span>
+      <!-- logo for regular state and mobile devices -->
+      <span class="logo-lg"><i class="fa fa-home"></i>INICIO</span>
+    </a>
+
+    <!-- Header Navbar -->
+    <nav class="navbar navbar-static-top" role="navigation">
+      <!-- Sidebar toggle button-->
+      <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+        <span class="sr-only">Toggle navigation</span>
+      </a>
+      <!-- Navbar Right Menu -->
+      <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+          <!-- Messages: style can be found in dropdown.less-->
+          <!-- User Account Menu -->
+          <li class="dropdown user user-menu">
+            <!-- Menu Toggle Button -->
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <!-- The user image in the navbar-->
+               <?php echo Html::img('logofondo.jpg','una imagen', array('class'=>'user-image'))?>
+              <!-- hidden-xs hides the username on small devices so only the image appears. -->
+              <span class="hidden-xs"><?php echo Session::get('nombre').' '.Session::get('paterno').' '.Session::get('materno')?></span>
+            </a>
+            <ul class="dropdown-menu">
+              <!-- The user image in the menu -->
+              <li class="user-header">
+              <?php echo Html::img('logofondo.jpg','una imagen', array('class'=>'img-circle'))?>
+              <p><?php echo Session::get('nombre').' '.Session::get('paterno').' '.Session::get('materno')?></p>
+              </li>
+              <!-- Menu Footer-->
+              <li class="user-footer">
+                <div class="pull-right">
+                  <a href="<?php echo PUBLIC_PATH ?>principal/salir" class="btn btn-default btn-flat btn-warning">Cerrar Sesión</a>
+                </div>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Left side column. contains the logo and sidebar -->
+  <aside class="main-sidebar"  >
+
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+
+      <!-- Sidebar user panel (optional) -->
+      <div class="user-panel">
+        <div class="pull-left image">
+          <?php echo  Html::img('logofondo.jpg','una imagen', array('class'=>'img-circle'))?>
+        </div>
+        <div class="pull-left info">
+          <!-- Status -->
+         
+        </div>
+      </div>
+
+      <!-- search form (Optional) 
+      <form action="#" method="get" class="sidebar-form">
+        <div class="input-group">
+          <input type="text" name="q" class="form-control" placeholder="Search...">
+              <span class="input-group-btn">
+                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+                </button>
+              </span>
+        </div>
+      </form>
+      /.search form -->
+
+      <!-- Sidebar Menu -->
+      <ul class="sidebar-menu">
+        <li class="header"></li>
+        <!--ORDENES-->
+        <li class="treeview">
+
+          <a href="<?php echo PUBLIC_PATH ?>ordenes/formCreacion/<?php echo $idexpcifrado?>"><i class="fa fa-folder"></i> <span>ORDENES</span>
+          </a>
+        </li>
+        <li class="treeview">
+          <a href="<?php echo PUBLIC_PATH ?>ofendidos/formcreate/<?php echo $idexpcifrado?>"><i class="glyphicon glyphicon-user text-green"></i> <span>VICTIMAS</span>
+          </a>
+        </li>
+        <li class="treeview">
+          <a href="<?php echo PUBLIC_PATH ?>indiciados/formcreate/<?php echo $idexpcifrado?>"><i class="fa fa-user-secret text-red"></i> <span>IMPUTADOS</span>
+          </a>
+        </li>
+        <li class="treeview">
+          <a href="<?php echo PUBLIC_PATH ?>ofeindis/formcreate/<?php echo $idexpcifrado?>"><i class="fa fa-legal text-purple"></i> <span>DELITOS</span>
+          </a>
+        </li>
+
+      </ul>
+      <!-- /.sidebar-menu -->
+    </section>
+    <!-- /.sidebar -->
+  </aside>
+
+
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+  
+
+      <section class="content">
+
+     <?php View::content() ?>
+
+    </section>
+   
+  </div>
+  <!-- /.content-wrapper -->
+
+  <!-- Main Footer -->
+  <footer class="main-footer">
+    <!-- To the right -->
+    <div class="pull-right hidden-xs">
+    
+    </div>
+    <!-- Default to the left -->
+    <strong>FISCALIA GENERAL DEL ESTADO DE OAXACA</strong> 
+  </footer>
+</div>
+<div class="modal" tabindex="-1" role="dialog" id="modal_cargando">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Cargando...</h4>
+      </div>
+    </div>
+  </div>
+</div>
+<?php
+
+echo Tag::js('plugins/bootstrap.min');
+echo Tag::js('plugins/fastclick');
+echo Tag::js('plugins/app.min');
+echo Tag::js('plugins/jquery.sparkline.min');
+echo Tag::js('plugins/jquery-jvectormap-1.2.2.min');
+echo Tag::js('plugins/jquery-jvectormap-world-mill-en');
+echo Tag::js('plugins/jquery.slimscroll.min');
+echo Tag::js('plugins/Chart.min');
+echo Tag::js('plugins/demo');
+echo Tag::js('plugins/sweetalert2');
+echo Tag::js('plugins/datetimepicker-master/jquery.datetimepicker.full.min');
+echo Tag::js('plugins/EasyAutocomplete/jquery.easy-autocomplete.min');
+echo Tag::js('plugins/validator');
+echo Tag::js('plugins/bootstrap-select.min');
+echo Tag::js('plugins/defaults-es_ES');
+echo Tag::js('formularios/formularios'); 
+echo Tag::js('plugins/bootstrap-tagsinput.min'); 
+
+?>
+
+<script type="text/javascript">
+$(function(){
+  setTimeout(function() {
+    $( "div.flash" ).not( ".error" ).fadeOut(1500);
+  },2000); 
+  
+});
+function configModalLoading(){
+  $('#modal_cargando').modal({
+    keyboard: false,
+    backdrop: false
+  });
+}
+</script>
+</body>
+</html>

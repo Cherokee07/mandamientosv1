@@ -1,0 +1,73 @@
+@charset "utf-8";
+/* CSS Document */
+
+BODY {
+   font: 10pt Verdana, Geneva, Arial, Helvetica, sans-serif;
+   margin: 5 0 5 0px;
+   text-align: center;
+    background-color: #ffffff;
+}
+
+#bmenu {
+	visibility:hidden;
+}
+
+#barra {
+	visibility:hidden;
+}
+
+#imprimir {
+	visibility:hidden;
+}
+
+#cerrar {
+	visibility:hidden;
+}
+
+#pie {
+	visibility:hidden;
+}
+
+#header_der{
+	visibility:hidden;
+}
+
+#marco{
+border: 0px solid #cccccc;
+background:#FFFFFF;
+text-align: left;
+width: 990px;
+margin: 0px 0px 0px 0px;/* Superior, Derecho, Abajo, Izquierdo */
+} 
+
+
+.Tit_Encabezado{
+color:#000000;
+/*background :url(file:///G|/webillar_web/imagenes/verde.gif);*/
+font-size:11pt;
+/*text-transform : uppercase;*/
+padding: 8px 0px 8px 40px;
+font:Verdana, Arial, Helvetica, sans-serif;
+font-weight:bold;
+letter-spacing : 1px;
+text-decoration:none;
+margin: 0px 0px 2px 0px; /* Superior, Derecho, Abajo, Izquierdo */
+/*
+#imprimir {
+visibility:hidden
+}
+
+#frmAplicar {
+visibility:hidden
+}
+
+#cerrar {
+visibility:hidden
+}
+
+TABLE      { border: outset 0pt; 
+               border-collapse:collapse;
+               border-spacing: 0pt }
+  TD         { border: inset 0pt }
+  TD.especial { border: inset 0pt }
+*/

@@ -1,0 +1,163 @@
+<link href="<?php echo PUBLIC_PATH ?>css/plugins/dataTables.bootstrap.css"  rel="stylesheet" type="text/css">
+<?php View::content(); ?>
+<div class="row">
+	<div class="col-md-12">
+		<div class="box box-success">
+			<div class="box-header with-border">
+				<h3>DATOS DEL DELITO</h3>				
+			</div>
+			<?php echo Form::open("ofeindis/crearDelitoTemp", 'post', 'id="form-del"'); ?>
+			<div class="box-body">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="form-group col-md-6">
+							<label for="exampleSelect2">IMPUTADOS</label>
+							<select multiple class="form-control" name="indiciados[]" id="indiciados">
+								<?php foreach ($ordenes->getIndiciados() as $key):?>	
+								<option value="<?php echo $key->id ?>">  <?php echo $key->nombre ?></option>
+								<?php endforeach ?>
+							</select>								
+						</div>		
+						<div class="form-group col-md-6">
+							<label for="exampleSelect2">VICTIMAS</label>
+							<select multiple class="form-control" name="ofendidos[]" id="ofendidos">
+								<?php foreach ($ordenes->getOfendidos() as $key):?>	
+								<option value="<?php echo $key->id?>"><?php echo $key->nombre ?></option>
+								<?php endforeach ?>
+							</select>
+						</div>					
+					</div>
+				</div>
+				<div class="complemento1">
+					<div class="row">
+						<div class="col-md-12">
+							<input type="hidden" name="delitotemp[ordenes]" value="<?php echo $ordenes->id ?>">
+							<div class="col-md-6 form-group">
+	                        	<label class="control-label">Delito Estadistico Ordenes</label>
+	                      	    <?php echo Form::dbSelect('delitotemp.delito','delito',array('delitos','listar'),' SELECCIONE UN DELITO ' , ' class="form-control age selectpicker" data-live-search="true" style="width:100%"') ?>
+	                      	</div>
+							<div class="form-group col-md-6">
+								<label>Particularidades</label>
+								<input type="textarea" name="delitotemp[particularidades]"  class="mayuscula form-control">
+							</div>
+							<div class="form-group col-md-4">
+								<label>Grave</label>
+								<select name="delitotemp[grave]" class="form-control">
+									<option value="S">SI</option>
+									<option value="N">NO</option>}
+								</select>
+							</div>
+							<div class="form-group col-md-4">
+								<label>Tentativa</label>
+								<select name="delitotemp[tentativa]" class="form-control">
+									<option value="S">SI</option>
+									<option value="N">NO</option>}
+								</select>
+							</div>		
+							<div class="form-group col-md-4">
+								<label>Culposo</label>
+								<select name="delitotemp[culposo]" class="form-control">
+									<option value="S">SI</option>
+									<option value="N">NO</option>}
+								</select>
+							</div>								
+						</div>
+					</div>
+				</div>
+				<hr>
+				<div class="complemento">
+					<div class="row">
+						<div class="col-md-12">	
+							<div class="form-group col-md-12">
+								<label>Delito estadistico</label>
+								<?php echo Form::dbSelect('delitotemp.delestadis','delito', array('delitos','listardelito'),'SELECCIONE DELITO ESTADISTICO','class=" form-control age selectpicker" data-live-search="true" style="width:100%"' ) ?>				
+							</div>									
+							<div class="form-group col-md-3">
+								<label class="control-label">Conducta</label>
+								<select class="form-control" name="delitotemp[tentativaestadis]" required>
+								<option value="">SELECCIONE</option>
+								<option value="N" <?php echo isset($delitounico)?($delitounico->tentativa=='N'?'selected':''):'' ?>>CONSUMADA</option>
+								<option value="S" <?php echo isset($delitounico)?($delitounico->tentativa=='S'?'selected':''):'' ?>>TENTATIVA</option>
+								</select>
+							</div>
+							<div class="form-group col-md-3">
+								<label class="control-label">Forma de comisión</label>
+								<select class="form-control" name="delitotemp[culposoestadis]" required>
+								<option value="">SELECCIONE</option>
+								<option value="N" <?php echo isset($delitounico)?($delitounico->culposo=='N'?'selected':''):'' ?>>DOLOSO</option>
+								<option value="S" <?php echo isset($delitounico)?($delitounico->culposo=='S'?'selected':''):'' ?>>CULPOSO</option>
+											</select>
+							</div>
+							<div class="form-group col-md-3">
+								<label class="control-label">Modalidad del delito</label>
+								<?php echo Form::dbSelect('delitotemp.moddelitos','modalidad',array('moddelitos','listar'),'SELECCIONE',isset($atributo)?"class='form-control $atributo'":'class=form-control', isset($delitounico)?$delitounico->moddelitos_id:'') ?> 
+							</div>
+							<div class="form-group col-md-3">
+								<label class="control-label">Forma de acción</label>
+								<select class="form-control" name="delitotemp[violentoestadis]" required>
+								<option value="">SELECCIONE</option>
+								<option value="N" <?php echo isset($delitounico)?($delitounico->violento=='N'?'selected':''):'' ?>>SIN VIOLENCIA</option>
+								<option value="S" <?php echo isset($delitounico)?($delitounico->violento=='S'?'selected':''):'' ?>>CON VIOLENCIA</option>
+											</select>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="box-footer">
+					<div class="col-md-12 botones">
+						<button class="btn btn-lg btn-success btn-flat pull-right boton botondel">Guardar delito</button>
+					</div>
+				</div>
+			</div>
+		</div>						
+	</div>
+</div>
+
+
+
+<div class="row">
+  <div class="col-lg-12 col-md-12">
+    <div class="box box-success collapsed-box" >
+      <div class="box-header">
+        <h3 class="text-navy">DELITOS</h3>
+        <div class="box-tools pull-right">
+          <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+          </button>
+        </div>
+      </div>
+      <div class="box-body">
+        <div class="row">
+          <div class="col-lg-12 col-md-12 small">
+            <table class="table table-hover table-striped table-condensed" id="tabla_usuarios">
+              <thead>
+                <th>id</th>
+                <th>Nombre indiciado</th>
+                <th>Nombre ofendido</th>
+                <th>Delito estadistico</th>
+              </thead>
+              <tbody>
+                <?php foreach ($ofeindis as $key): ?>
+                  <tr>
+                    <td><?php echo $key->id ?></td>
+                    <td><?php echo $key->getindiciados()->nombre ?></td>
+                    <td><?php echo $key->getofendidos()->nombre ?></td>              
+                    <td><?php echo $key->getdelitos()->delito ?></td>
+                  </tr> 
+                <?php endforeach ?>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+.complemento{
+    background: #D9EFF4;
+ }   
+.complemento1{
+    background: #EEDCD6;
+ }   
+</style>

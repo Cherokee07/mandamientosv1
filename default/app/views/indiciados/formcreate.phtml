@@ -1,0 +1,238 @@
+<?php View::content(); ?>
+<link href="<?php echo PUBLIC_PATH ?>css/plugins/dataTables.bootstrap.css"  rel="stylesheet" type="text/css">
+     <div class="box box-primary">
+        <?php if(isset($indiciado)){ ?>
+                <h4 class="text-danger"> Edicion</h4>
+        <?php } ?>
+      <h3 class="box-title" >DATOS DEL IMPUTADO</h3>
+        <?php echo Form::open("indiciados/crearIndiciadoTemp", 'post', 'class="form-group"'); ?>
+        <div class="box-body">
+            <div class="row">
+                <?php if(isset($indiciado)): ?>
+                    <input type="hidden" name="indiciado" value="<?php echo $indiciado->id ?>">
+                <?php endif ?>
+                <input type="hidden" name="indiciados[ordenes]" value="<?php echo $orden->id?>">
+                <div class="col-md-4">
+                  <label class="control-label">Nombre</label>
+                  <input type="text" name="indiciados[nombre]" class="mayuscula  obligatorio form-control" value="<?php echo isset($indiciado)?$indiciado->nombre:'' ?>">
+                </div>
+                <div class="col-md-3 form-group">
+                    <label class="control-label">Apellido Paterno</label>
+                    <input class="form-control mayuscula" name="indiciados[paterno]" type="text" id="paterno" value="<?php echo isset($indiciado)?$indiciado->paterno:'' ?>">
+                </div>
+                <div class="col-md-3 form-group">
+                    <label class="control-label">Apellido Materno</label>
+                    <input class="form-control mayuscula" name="indiciados[materno]" type="text" id="paterno" value="<?php echo isset($indiciado)?$indiciado->materno:'' ?>">
+                </div>
+                <div class="col-md-2 form-group">
+                     <label class="control-label">Edad</label>
+                     <input class="form-control" name="indiciados[edad]" type="number" value="<?php echo isset($indiciado)?$indiciado->edad:'' ?>">
+                </div>
+                <div class="col-md-2 form-group">
+                  <label class="control-label">Fecha de nacimiento</label>
+                  <input type="date" name="indiciados[fechanacimiento]" class="form-control" value="<?php echo isset($indiciado)?$indiciado->fechanacimiento:'' ?>"> 
+                </div>
+                <div class="col-md-2 form-group">
+                    <label class="control-label">Sexo</label>
+                    <select class="form-control" name="indiciados[sexo]">
+                        <option value="D" <?php echo isset($indiciado) ? ($indiciado->sexo == 'D' ? 'selected' : '') : '' ?>>DESCONOCIDO</option>
+                        <option value="F" <?php echo isset($indiciado) ? ($indiciado->sexo == 'F' ? 'selected' : '') : '' ?>>FEMENINO</option>
+                        <option value="M" <?php echo isset($indiciado) ? ($indiciado->sexo == 'M' ? 'selected' : '') : '' ?>>MASCULINO</option>
+                    </select>
+                </div>               
+                <div class="col-md-3 form-group">
+                    <label class="control-label">Alias </label>
+                    <input class="form-control mayuscula" type="text" name="indiciados[sobren]" id="materno" value="<?php echo isset($indiciado)?$indiciado->sobren:'' ?>">
+                </div>
+                <div class="col-md-5 form-group">
+                  <label class="control-label">Nacionalidad </label>
+                  <?php echo Form::dbSelect('indiciados.nacionalidad','nacionalidad',array('nacionalidades','listar'),'Seleccione',' class="form-control age selectpicker" data-live-search="true"', isset($indiciado)?$indiciado->nacionalidades_id:'' ) ?>
+                </div>
+                <div class="col-md-3 pais" hidden>
+                    <label class="control-label">País</label>
+                    <input type="text" name="ofendidos[pais]" class="form-control mayuscula" value="<?php echo isset($indiciado)?$indiciado->lugarnac:'' ?>">
+                </div> 
+                <div class="col-md-6 form-group">
+                  <label class="control-label">Lugar de nacimiento</label>
+                  <?php echo Form::dbSelect('indiciados.lugarnac','entidad',array('entidades','listar'),'SELECCIONE','class="form-control selectentidad"',isset($indiciado)?$indiciado->entidades_id:'') ?> 
+                </div>
+                <div class="col-md-6 form-group">
+                  <label class="control-label">Lugar de residencia</label>
+                  <input type="text" name="indiciados[lugarres]" class="form-control mayuscula" value="<?php echo isset($indiciado)?$indiciado->lugarres:''?>">
+                </div>
+                <div class="col-md-5 form-group">
+                  <label class="control-label">Domicilio</label>
+                  <input type="text" name="indiciados[domicilio]" class="form-control mayuscula" value="<?php echo isset($indiciado)?$indiciado->domicilio:'' ?>">
+                </div>
+                <div class="col-md-4 form-group">
+                  <label class="control-label">Ocupación</label>
+                  <input type="text" name="indiciados[ocupacion]" class="form-control mayuscula" value="<?php echo isset($indiciado)?$indiciado->ocupacion:'' ?>">
+                </div>
+                <div class="col-md-3 form-group">
+                  <label class="control-label">Grado de estudios</label>
+                  <?php echo Form::dbSelect('indiciados.escolaridad','escolaridad',array('escolaridades','listar'),'Seleccione',' class="form-control age selectpicker" data-live-search="true"', isset($indiciado)?$indiciado->escolaridades_id:'' ) ?>
+                </div>
+                <div class="col-md-3 form-group">
+                  <label class="control-label">Grupo Etnico</label>
+                  <?php echo Form::dbSelect('indiciados.grupoet','grupo',array('getnicos' , 'listar'), 'SELECCIONE', 'class="form-control age selectpicker" data-live-search="true"', isset($indiciado)?$indiciado->getnicos_id:'' ) ?>                 
+                </div>
+                <div class="col-md-3 form-group">
+                  <label class="control-label">Dialecto/Sistema Lingüístico</label>
+                  <?php echo Form::dbSelect('indiciados.dialectos_id','dialecto', array('dialectos','listar'), 'SELECCIONE', ' class="form-control age selectpicker" data-live-search="true"', isset($indiciado)?$indiciado->dialectos_id:'') ?>
+                </div>
+                <div class="col-md-3 form-group">
+                  <label class="control-label">Numero de cartilla de SMN</label>
+                  <input type="text" name="indiciados[serviciomilitar]" class="form-control mayuscula" value="<?php echo isset($indiciado)?$indiciado->serviciomilitar:'' ?>">
+                </div>
+                <div class="col-md-3 form-group">
+                  <label class="control-label">RFC</label>
+                  <input type="text" name="indiciados[rfc]" class="form-control mayuscula" value="<?php echo isset($indiciado)?$indiciado->rfc:'' ?>">
+                </div>
+              </div>
+                <div class="complemento">
+                  <div class="row">
+                    <div class="col-md-12">
+                        <div class="col-md-6 form-group">
+                            <label class="control-label">Menor de edad</label>
+                            <select class="form-control" name="indiciados[menor]" id="selectmenor">
+                                <option value="0" <?php echo isset($indiciado)?($indiciado->menor=='N'?'selected':''):''?>>NO</option>
+                                <option value="1" <?php echo isset($indiciado)?($indiciado->menor=='S'?'selected':''):''?>>SI</option>
+                            </select>
+                        </div>
+                      <!--inicio:form complementario por si es menor-->
+                      <div class="form-menor" hidden>
+                        <div class="col-md-5 form-group">
+                          <label class="control-label">Nombre del responsable</label>
+                          <input type="text" name="indiciados[nomres]" class="form-control mayuscula" value="<?php echo isset($indiciado)?$indiciado->responsable_nombre:'' ?>" >
+                        </div>
+                        <div class="col-md-4 form-group">
+                          <label class="control-label">Ap.Paterno del responsable</label>
+                          <input type="text" name="indiciados[apatres]" class="form-control mayuscula" value="<?php echo isset($indiciado)?$indiciado->responsable_paterno:'' ?>">
+                        </div>
+                        <div class="col-md-4 form-group">
+                          <label class="control-label">Ap.Materno del responsable</label>
+                          <input type="text" name="indiciados[amatres]" class="form-control mayuscula" value="<?php echo isset($indiciado)?$indiciado->responsable_materno:'' ?>">
+                        </div>
+                        <div class="col-md-4 form-group">
+                          <label class="control-label">Persona moral</label>
+                          <select name="indiciados[moral]" class="form-control">
+                                <option value="N" <?php echo isset($indiciado)?($indiciado->moral=='N'?'selected':''):''?>>NO</option>
+                                <option value="S" <?php echo isset($indiciado)?($indiciado->moral=='S'?'selected':''):''?>>SI</option>
+                          </select>
+                        </div>
+                      </div>
+                      <!--fin:form complementario por si es menor-->
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3 form-group" >
+                    <label class="control-label">Estado de Orden</label>
+                     <?php echo Form::dbSelect('indiciados.estadosoa_id', 'descripcion', array('estadosoa', 'listar'), 'Seleccione', 'class="form-control" style="width: 100%"', isset($indiciado)?$indiciado->estadosoa_id:'') ?>
+                </div>
+                <div class="col-md-3 form-group" >
+                    <label class="control-label">Motivo</label>
+                    <?php echo Form::dbSelect('indiciados.motivosoa_id', 'descripcion', array('motivosoa', 'listar2'), 'Seleccione', 'class="form-control" style="width: 100%"', isset($indiciado)?$indiciado->motivosoa_id:'') ?>    
+                </div>
+                <div class="col-md-3 form-group">
+                    <label class="control-label">Fecha de Libramiento</label>
+                    <input class="form-control" type="date" name="indiciados[fecedo]" value="<?php echo isset($indiciado)?$indiciado->fecedo:'' ?>">
+                </div>
+                <div class="col-md-3 form-group">
+                  <label class="control-label">Funcionario publico</label>
+                  <select class="form-control mayuscula" type="text" name="indiciados[autoridad]" id="autoridad">
+                    <option value="S" <?php echo isset($indiciado) ? ($indiciado->autoridad == 'S' ? 'selected' : '') : '' ?>>SI</option>
+                    <option value="N" <?php echo isset($indiciado) ? ($indiciado->autoridad == 'N' ? 'selected' : '') : '' ?>>NO</option>    
+                  </select>
+                </div>
+                <div class="col-md-3 form-group">
+                  <label class="control-label">Fecha de ultimo cambio de estado</label>
+                  <input class="form-control" type="date"  name="indiciados[fechacambio]" value="<?php echo isset($indiciado)?$indiciado->fecha_cambio:'' ?>">
+                </div> 
+                <div class="col-md-12 form-group">
+                    <label>Observaciones :</label>
+                    <textarea name="indiciados[observaciones]" class="mayuscula form-control"><?php echo isset($indiciado)?$indiciado->observaciones:'' ?></textarea>              
+                </div>
+                <div class="box-footer">
+                    <div class="col-lg-12 col-md-12 pull-right">
+                        <button type="reset" class="btn btn-warning btn-flat" style="margin-right:10px;">Limpiar</button>
+                        <button type="submit" value="formulario" name="formulario" class="btn btn-success btn-flat">Guardar</button>
+                    </div> 
+                </div>
+            <?php echo Form::close(); ?>
+        </div>
+    </div>
+
+<?php if(count($orden->getindiciados())>0): ?>
+    <div class="col-md-12">
+        <div class="box box-danger boxlista" >
+            <div class="box-header text-center"><h3>LISTA DE IMPUTADO</h3>
+                <div class="box-body">
+                    <div class="col-md-12">
+                        <table class="table table-condensed table-hover">
+                            <thead>
+                                <th>Nombre del imputado</th>
+                                <th>Nombres Fictisios</th>
+                                <th class="text-center">Agregar nombre fictisio</th>
+                                <th>Editar</th>
+                                <th>Editar Status</th>
+                                <th>Media afiliacion</th>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($orden->getIndiciados() as $key ): ?>
+                                    <tr id="row-<?php echo $key->id ?>">
+                                        <td class="nombre-<?php echo $key->id; ?>">
+                                            <?php echo $key->getNombre()?>
+                                        </td>
+                                        <td>
+                                            <ul class="nav nav-pills nav-stacked">
+                                                <?php foreach ($key->getNomindis() as $nombre): ?>
+                                                    <li class="item" id="lis-<?php echo $nombre->id ?>"><?php echo $nombre->getNombre() ?>
+                                                        <div class="pull-right">
+                                                            <i class="fa fa-pencil text-orange editname" data-name="<?php echo $nombre->id ?>" data-id="<?php echo $nombre->id ?>"></i>
+                                                        </div>
+                                                    </li>
+                                                <?php endforeach ?>
+                                            </ul>
+                                        </td>
+                                        <td>    
+                                        </td>
+                                        <td>
+                                            <span class="badge bg-yellow"><a href="<?php echo PUBLIC_PATH.'indiciados/formcreate/'.Cifrar::todo($orden->id).'/'.Cifrar::todo($key->id)?>"><i class="fa fa-pencil"></i></a>
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span class="badge bg-yellow"><a href="<?php echo PUBLIC_PATH.'indiciados/formStatus/'.Cifrar::todo($orden->id).'/'.Cifrar::todo($key->id)?>"><i class="fa fa-pencil"></i></a>
+                                            </span>
+                                        </td>
+                                        <td>
+                                          <?php foreach ($key->getMedafiliacion() as $med): ?>                                          
+                                            <span class="badge bg-yellow"><a href="<?php echo PUBLIC_PATH.'indiciados/formfiliacion/'.Cifrar::todo($orden->id).'/'.Cifrar::todo($key->id).'/'.Cifrar::todo($med->id)?>"><i class="fa fa-pencil"></i></a>
+                                          <?php endforeach ?>
+                                        </td>                                       
+                                    </tr>
+                                <?php endforeach ?>
+                            </tbody>                            
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php endif ?>
+
+
+
+<?php echo Tag::js('formularios/formularios'); ?>
+<?php echo Tag::js('formularios/formulariovic'); ?>
+
+<style>
+.complemento{
+    background: #D9EFF4;
+ }   
+.complemento1{
+    background: #E8F8FB;
+ }   
+.complemento2{
+    background: #BDC3C4;
+}
+</style>

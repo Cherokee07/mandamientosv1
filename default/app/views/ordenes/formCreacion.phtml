@@ -1,0 +1,189 @@
+<?php View::content(); ?>
+<div class="row">
+    <div class="box box-primary">
+    <h2 class="text-red col-md-12">ORDEN DE APREHENSIÓN INICIADA</h2>
+    <h3 class="box-title" >DATOS DE LA ORDEN</h3> 
+        <div class="box-body">
+            <?php echo Form::open("ordenes/crearOrdenTemporal/".$idexpcifrado,'post'); ?>
+            <div class="col-md-12" style="border: dotted #7496a7"><!--para los bordes-->
+                <div class="col-md-2 form-group">
+                    <label >Expediente Penal</label>
+                    <input class="form-control" name="ordenes[exppenal]" value="<?php echo ($orden->exppenal!=null)?$orden->exppenal:'' ?>" >
+                </div>
+                <div class="col-md-2 form-group">
+                    <label class="control-label">Año Penal</label>
+                    <input class="form-control" name="ordenes[anipenal]" value="<?php echo ($orden->anipenal!=null) ? $orden->anipenal:'' ?>" >
+                </div>
+                <div class="col-md-6 form-group">
+                    <label class="control-label">Juzgado</label>
+                    <?php echo Form::dbSelect('ordenes.juzgados','juzgado',array('juzgados', 'listar'),'SELECCIONE UN JUZGADO',' class="form-control age selectpicker" data-live-search="true"', ($orden->juzgados_id!=null)?$orden->juzgados_id:'') ?>
+                </div>
+                <div class="col-md-2 form-group">
+                    <label  class="control-label">Tipo de Orden </label>
+                    <?php echo Form::dbSelect('ordenes.tiposoa','descripcion',array('tiposoa','listar'),'Seleccione','class="form-control" ',($orden->tiposoa_id!=null)?$orden->tiposoa_id:'') ?>
+                </div>
+                <div class="col-md-2 form-group">
+                    <input type="number" name="ordenes[ocasion]" value="1" class="form-control" style="display:none;">
+                </div>
+            </div>
+            <div class="col-md-12 form-group">
+                <label class="control-label">Localidades</label>
+                <?php echo Form::dbSelect('ordenes.localidades','localidad',array('localidades', 'listar'),'SELECCIONE UNA LOCALIDAD',' class="form-control age selectpicker" data-live-search="true" ', ($orden->localidades_id!=null)?$orden->localidades_id:'') ?>
+            </div>
+            <div class="complement">
+                <div class="row">
+                    <div class="col-md-12"> 
+                        <div class="form-group col-md-2">
+                            <label class="control-label">Averiguacion </label>
+                            <input class="form-control" name="ordenes[averiguacion]" value="<?php echo ($orden->numaver!=null)?$orden->numaver:'' ?>" >
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label class="control-label">Agencia</label>
+                            <?php echo Form::dbSelect('ordenes.agencias_id','agencia',array('agencias', 'listar'),'SELECCIONE UNA AGENCIA',' class="form-control age selectpicker" data-live-search="true"', ($orden->agencias_id!=null?$orden->agencias_id:'' )) ?>
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label class="control-label">Año </label>
+                            <input class="form-control" name="ordenes[aniagen]" value="<?php echo ($orden->aniagen)?$orden->aniagen:'' ?>">
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label class="control-label">Turno</label>
+                            <input class="form-control" name="ordenes[turno]" value="<?php echo ($orden->turno)?$orden->turno:'' ?>">
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label class="control-label">Fecha de Libramiento </label>
+                            <input class="form-control" type="date" name="ordenes[feclib]" value="<?php echo ($orden->feclib!=null)?$orden->feclib:'' ?>" >
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="complemento">
+                <div class="row">
+                    <div class="col-md-12">                    
+                        <div class="col-md-4 form-group">
+                            <label>Oficio Recibido en dpto Ordenes de Aprehensión</label>
+                            <input type="text" name="ordenes[ofirec]" class="mayuscula form-control" value="<?php echo ($orden->ofirec!=null)?$orden->ofirec:''?>">           
+                        </div>
+                        <div class="col-md-3 form-group">
+                            <label class="control-label">Fecha de recibido</label>
+                            <input class="form-control" type="date" name="ordenes[fecrec]" value="<?php echo ($orden->fecrec!=null)?$orden->fecrec:''?>">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="complemento1">
+                <div class="row">
+                    <div class="col-md-12">                        
+                        <div class="col-md-4 form-group">
+                            <label>Oficio Entrega a Agencia Estatal de Investigación</label>
+                            <input type="text" name="ordenes[ofientpj]" class=" mayuscula form-control" value="<?php echo ($orden->ofientpj!=null)?$orden->ofientpj:'' ?>">          
+                        </div>                      
+                        <div class="col-md-3 form-group">
+                            <label class="control-label">Fecha entrega</label>
+                            <input class="form-control" type="date" name="ordenes[fecentpj]" value="<?php echo ($orden->fecentpj!=null)?$orden->fecentpj:''?>">
+                        </div>                      
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="col-md-8 form-group">
+                <label>A quien va dirigido</label>
+                <input type="text" name="ordenes[dirijido]" class=" mayuscula form-control" value="<?php echo ($orden->dirijido!=null)?$orden->dirijido:'' ?>">                       
+            </div>
+            <div class="col-md-2 form-group">
+                <label>Orden en fisico</label>
+                <select class="form-control" name="ordenes[ordenfisico]">
+                    <option value="NO" <?php echo isset($orden)?($orden->ordenfisico=='NO'?'selected':''):'' ?>>NO</option>
+                    <option value="SI" <?php echo isset($orden)?($orden->ordenfisico=='SI'?'selected':''):'' ?>>SI</option>
+              </select>                    
+            </div>
+            <div class="col-md-12 form-group">
+                <label>Sintesis de los hechos </label>
+                <textarea name="ordenes[sintesis]" class="mayuscula form-control" data-toggle="tooltip" title="Anexado a plataforma Mexico"><?php echo ($orden->sintesis!=null)?$orden->sintesis:'' ?></textarea>                                           
+            </div>
+            <div class="col-md-12 form-group">
+                <label>Notas (exclusivas para el capturista)</label>
+                <textarea name="ordenes[notas]" class="mayuscula form-control"><?php echo ($orden->notas!=null)?$orden->notas:'' ?></textarea>                                                        
+            </div>
+        <!--<div class="col-md-4 form-group">
+              <label>Subir foto</label>
+              <input name="imagen" class="form-control" type="file">
+            </div>
+            <div>
+              <input type="file" id="files" name="files" accept="image/png, .jpeg, .jpg, image/gif" /><br />
+              <output id="list"></output>
+          </div>-->
+            <div class="box-footer">
+                <div class="col-lg-12 col-md-12 pull-right">
+                <button type="reset" class="btn btn-warning btn-flat" style="margin-right:10px;">Limpiar</button>
+                <button type="submit" value="formulario" name="formulario" class="btn btn-success btn-flat">Registrar</button>
+            </div> 
+            </div>
+            <?php echo Form::close(); ?>
+        </div>
+    </div>
+</div>   
+
+
+
+
+<script type='text/javascript'>
+  $(document).on('change', "#distritos_id", function () {
+    var distritos_id = $('#distritos_id').val();
+    $.ajax({
+     type: "POST",
+     url: "<?php echo PUBLIC_PATH . 'ordenes/getMunicipios/'; ?>",
+     data: "distritos_id=" + distritos_id,
+     success: function (html) {
+       $("#div_municipios").html(html);
+   }
+});
+});
+</script>
+
+
+<style>
+.thumb {
+    height: 300px;
+    border: 1px solid #000;
+    margin: 10px 5px 0 0;
+}
+</style>
+
+<script>
+  function archivo(evt) {
+                  var files = evt.target.files; // FileList object
+
+                  // Obtenemos la imagen del campo "file".
+                  for (var i = 0, f; f = files[i]; i++) {
+                    //Solo admitimos imágenes.
+                    if (!f.type.match('image.*')) {
+                        continue;
+                    }
+
+                    var reader = new FileReader();
+
+                    reader.onload = (function(theFile) {
+                        return function(e) {
+                          // Insertamos la imagen
+                          document.getElementById("list").innerHTML = ['<img class="thumb" src="', e.target.result,'" title="', escape(theFile.name), '"/>'].join('');
+                      };
+                  })(f);
+
+                  reader.readAsDataURL(f);
+              }
+          }
+
+          document.getElementById('files').addEventListener('change', archivo, false);
+ </script>
+
+
+      <style>
+      .complemento{
+        background: #CDECF3;
+    }   
+    .complemento1{
+        background: #EEDCD6;
+    }   
+</style>

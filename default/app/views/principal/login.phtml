@@ -1,0 +1,87 @@
+<?php header('Content-Type: text/html; charset=utf-8'); ?> 
+<?php View::content() ?>
+<!DOCTYPE html>
+<html>
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta name="base_url" content="<?php echo PUBLIC_PATH ?>">
+  <title> Ordenes de Aprehension|Log in</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- Bootstrap 3.3.6 -->
+ <!--Archivos css-->
+ <link href="<?php echo PUBLIC_PATH ?>css/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="screen">
+ <link href="<?php echo PUBLIC_PATH ?>css/AdminLTE.min.css" rel="stylesheet" type="text/css" media="screen">
+ <link href="<?php echo PUBLIC_PATH ?>css/ionicons.min.css" rel="stylesheet" type="text/css" media="screen">
+
+<?php echo Tag::js('plugins/jquery-2.2.3.min'); ?>
+<style type="text/css">
+  .ojo{
+     padding-right: 0px;
+     padding-left: 0px;
+  }
+  .alert h4 {
+    font-weight: 500;
+  }
+</style>
+
+</head>
+<body class="hold-transition login-page">
+  <div class="row">
+    <div class="col-md-12">
+      <h2 class="text-center" style="font-family:courier;" ><b>FISCALÍA GENERAL DEL ESTADO DE OAXACA</b></h2>
+    </div>
+    <div class="col-md-8 col-md-offset-2">
+      <div class="alert alert-info text-justify" role="alert" ><h4>
+        <strong>¡ADVERTENCIA!</strong> Al ingresar al sistema quedan registrados de manera digital los datos de ingreso, navegación, consulta, registro y modificación de la información en el mismo.<br>
+      Son causas de sanción usar, sustraer, destruir, ocultar, inutilizar, divulgar o alterar, total o parcialmente y de manera indebida, sin causa legítima, los datos a los cuales tengan acceso con motivo de su empleo, cargo o puesto, de conformidad con las disposiciones legales aplicables</h4>
+      </div>
+    </div>
+  </div>
+<div class="login-box">
+  <div class="login-logo"></div>
+  <!-- /.login-logo -->
+  <div class="login-box-body ">
+    <div class="text-center">
+      <?php echo Html::img('fiscalia.jpg','una imagen', array('style'=>' width: 200px'))?>
+    </div>
+    <h3><p class="login-box-msg">Iniciar sesión</p></h3>
+    <?php echo Form::open("principal/login",'post','id="formulario"'); ?> 
+    <div class="row">
+      <div class="col-md-11 logininput"> 
+        <div class="form-group has-feedback">
+          <input type="text" class="form-control" placeholder="Nombre de usuario" name="login" value="<?php echo @$_POST['login'] ?>" required>
+          <span class="glyphicon glyphicon-user form-control-feedback"></span>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-11 logininput">
+        <div class="form-group has-feedback">
+          <input type="password" class="form-control" placeholder="Contraseña" name="clave" required id="passwordfield">
+          <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+        </div>
+      </div>
+      <div class="col-md-1 ojo">
+        <span class="glyphicon glyphicon-eye-open"></span>
+      </div>       
+    </div>
+    <div class="row">
+      <?php echo Form::hidden("mode","","auth"); ?>
+      <div class="col-xs-4 pull-right">
+        <button type="submit" class="btn btn-primary btn-block btn-flat pull-left">Iniciar</button>
+      </div>
+    </div>
+    </form>
+  </div>
+</div>
+<?php
+echo Tag::js('plugins/bootstrap.min');
+echo Tag::js('plugins/validator');
+?>
+</body>
+</html>
+

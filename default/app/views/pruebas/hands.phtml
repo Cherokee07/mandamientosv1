@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link href="<?php echo PUBLIC_PATH ?>css/handsontable.full.css" rel="stylesheet" media="screen"  type="text/css">
+	<?php echo Tag::js('handsontable.full'); ?>
+</head>
+<body>
+
+	<div id="ResultadoTabla"> </div>
+		
+		<script>
+			datosLenguajes= [
+			['','Java','C','C++'],
+			['2012',1,2,1],
+			['2010',1,2,3]
+			];
+			configuraciones = {
+				data:datosLenguajes,
+				colHeaders:true
+			};
+
+			tblExcel = new 
+			Handsontable(document.getElementById('ResultadoTabla'),configuraciones);
+			tblExcel.render();
+
+		</script>
+
+</body>
+</html>
